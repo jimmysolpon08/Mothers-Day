@@ -1,0 +1,440 @@
+:root {
+    --primary-pink: #ff85a2;
+    --light-pink: #ffe4e1;
+    --soft-white: #fffdfd;
+    --text-color: #5a4b4b;
+    --caption-color: #8c6b71;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--soft-white);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('ideas/title.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Dark/soft overlay to make text pop, if needed, but keeping it light for cuteness */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    color: #ff4081; /* Pink cursive font */
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8), -1px -1px 4px rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #d81b60;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #d81b60;
+    font-weight: 600;
+}
+
+.scroll-down svg {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+/* Dictionary Definition */
+.intro-message {
+    text-align: left;
+    padding: 60px 40px;
+    background: transparent;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-message h2 {
+    font-family: 'Times New Roman', serif;
+    font-size: 5rem;
+    color: #111;
+    margin-bottom: 5px;
+    font-weight: normal;
+    letter-spacing: -2px;
+}
+
+.intro-message .phonetic {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.intro-message .definition {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+    max-width: 650px;
+}
+
+.intro-message .see-also {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Scrapbook Collage Section */
+.scrapbook-container {
+    padding: 50px 20px 100px;
+    max-width: 1200px;
+    margin: -100px auto 0; /* Overlap with intro message slightly */
+    position: relative;
+    min-height: 1200px;
+    cursor: pointer; /* Indicate it's clickable */
+    transition: transform 0.3s ease;
+}
+
+.scrapbook-container:hover {
+    transform: scale(1.02);
+}
+
+.click-prompt {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #ff4081;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 10;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Background Flowers */
+.flower {
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.5;
+    z-index: 1;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 15px rgba(255,105,180,0.3));
+    animation: sway 6s ease-in-out infinite alternate;
+}
+
+.f1 { top: 5%; left: 10%; font-size: 10rem; transform: rotate(15deg); }
+.f2 { top: 20%; right: 5%; font-size: 12rem; transform: rotate(-20deg); }
+.f3 { top: 40%; left: -5%; font-size: 14rem; transform: rotate(45deg); opacity: 0.4; }
+.f4 { top: 60%; right: 10%; font-size: 9rem; transform: rotate(-10deg); }
+.f5 { top: 80%; left: 20%; font-size: 11rem; transform: rotate(30deg); }
+.f6 { bottom: 0%; right: 20%; font-size: 13rem; transform: rotate(-35deg); opacity: 0.6; }
+
+@keyframes sway {
+    0% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+    100% { transform: translateY(-20px) rotate(calc(var(--rot, 0deg) + 10deg)); }
+}
+
+.gallery {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Scrapbook Photo Style */
+.photo-card {
+    background: #fff;
+    padding: 10px 10px 25px 10px;
+    border-radius: 2px; /* Harder edges for cutout look */
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.15);
+    transform: rotate(calc(var(--rotation) * 1deg));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: absolute; /* Absolute positioning for scrapbook scatter */
+    width: var(--width);
+    will-change: transform, opacity;
+}
+
+/* Scrapbook tape */
+.photo-card::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * -0.5deg));
+    width: 60px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    backdrop-filter: blur(2px);
+    z-index: 5;
+    /* Washi tape look */
+    background-image: linear-gradient(135deg, rgba(255,182,193,0.3) 25%, transparent 25%, transparent 50%, rgba(255,182,193,0.3) 50%, rgba(255,182,193,0.3) 75%, transparent 75%, transparent);
+    background-size: 10px 10px;
+}
+
+.photo-card:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+}
+
+.caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--caption-color);
+}
+
+/* Stickers */
+.sticker {
+    position: absolute;
+    font-size: 2rem;
+    z-index: 5;
+    pointer-events: none;
+    animation: float 3s ease-in-out infinite;
+}
+
+.sticker.heart { top: -15px; right: -15px; font-size: 2.5rem; }
+.sticker.cat { bottom: 10px; right: -20px; font-size: 3rem; }
+.sticker.dog { top: 50%; left: -25px; font-size: 2.5rem; }
+.sticker.sparkles { top: -10px; left: -10px; }
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Quote Section */
+.quote-section {
+    padding: 60px 20px;
+    background-color: var(--light-pink);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-box {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(255, 133, 162, 0.2);
+    position: relative;
+}
+
+.quote-box p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--primary-pink);
+    line-height: 1.4;
+}
+
+/* Music prompt */
+.video-or-music-prompt {
+    text-align: center;
+    padding: 30px;
+    color: var(--caption-color);
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-pink);
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+    .hero p {
+        font-size: 1.5rem;
+    }
+    .intro-message h2 {
+        font-size: 3.5rem;
+    }
+    .intro-message {
+        padding: 40px 20px;
+    }
+    .scrapbook-container {
+        min-height: 2500px; /* More height for mobile stacking */
+    }
+    .photo-card {
+        transform: none !important; /* Disabling rotation on mobile for better fit or keep it subtle */
+        position: relative !important; /* Stack them normally on mobile */
+        margin: 0 auto 30px !important;
+        left: auto !important;
+        top: auto !important;
+        width: 90% !important;
+    }
+    .flower {
+        font-size: 5rem;
+    }
+    .quote-box p {
+        font-size: 2rem;
+    }
+    .full-photo-card {
+        width: 95%;
+        padding: 15px 15px 25px 15px;
+    }
+}
+
+/* Fullscreen Gallery Overlay */
+.full-gallery-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 250, 252, 0.98);
+    z-index: 9999;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.full-gallery-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.close-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    background: none;
+    border: none;
+    color: #ff4081;
+    cursor: pointer;
+    z-index: 10000;
+    transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.2) rotate(90deg);
+}
+
+.gallery-scroll-container {
+    padding: 80px 20px 100px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.full-photo-card {
+    background: #fff;
+    padding: 20px 20px 40px 20px;
+    border-radius: 5px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    will-change: transform, opacity;
+}
+
+.full-photo-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+}
+
+.full-photo-card .caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--caption-color);
+}
+
+/* Floating Hearts Background */
+.floating-hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bg-heart {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.3;
+    animation: rise 10s infinite linear;
+    bottom: -50px;
+}
+
+.bg-heart:nth-child(1) { left: 10%; animation-duration: 12s; font-size: 30px; }
+.bg-heart:nth-child(2) { left: 30%; animation-duration: 15s; animation-delay: 2s; font-size: 20px; }
+.bg-heart:nth-child(3) { left: 50%; animation-duration: 11s; animation-delay: 4s; font-size: 35px; }
+.bg-heart:nth-child(4) { left: 70%; animation-duration: 14s; animation-delay: 1s; font-size: 25px; }
+.bg-heart:nth-child(5) { left: 85%; animation-duration: 16s; animation-delay: 5s; font-size: 28px; }
+.bg-heart:nth-child(6) { left: 95%; animation-duration: 13s; animation-delay: 3s; font-size: 22px; }
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.3; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(-100vh) scale(1.5) rotate(360deg); opacity: 0; }
+}

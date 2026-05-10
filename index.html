@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day, Mom!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+    <!-- Background Floating Hearts -->
+    <div class="floating-hearts-bg">
+        <div class="bg-heart">💖</div>
+        <div class="bg-heart">💗</div>
+        <div class="bg-heart">💓</div>
+        <div class="bg-heart">💕</div>
+        <div class="bg-heart">💖</div>
+        <div class="bg-heart">💗</div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__zoomIn">Happy mothers Day</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">To the most wonderful mom in the world ❤️</p>
+        </div>
+        <div class="scroll-down animate__animated animate__bounce animate__infinite">
+            <span>Scroll Down</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="intro-message">
+            <h2>mother</h2>
+            <p class="phonetic">[muhth-er] <strong>noun</strong></p>
+            <p class="definition">one person with superhuman abilities, can survive on 3 hours of sleep;<br>
+            skilled professional with expertise in finance, medicine, negotiation, and the culinary arts;<br>
+            always believes in you.</p>
+            <p class="see-also"><em>See also: superwoman, saint.</em></p>
+        </section>
+
+        <!-- Collage & Cutouts Section -->
+        <section class="scrapbook-container" id="scrapbookContainer" title="Click to open gallery!">
+            <div class="click-prompt animate__animated animate__pulse animate__infinite">✨ Click the collage to see all memories! ✨</div>
+            <!-- Flower Background Elements -->
+            <div class="flower f1">🌸</div>
+            <div class="flower f2">🌺</div>
+            <div class="flower f3">🌷</div>
+            <div class="flower f4">🌸</div>
+            <div class="flower f5">🌺</div>
+            <div class="flower f6">🏵️</div>
+
+            <!-- Items will be populated by JS -->
+            <div class="gallery" id="gallery">
+            </div>
+        </section>
+        
+        <section class="quote-section">
+            <div class="quote-box">
+                <p>"We love you so much mama, no matter how much you scold me, idzes and papa we know you always care for us"</p>
+                <div class="sticker bunny">🐰</div>
+                <div class="sticker heart-float">💖</div>
+            </div>
+        </section>
+
+        <audio id="bgMusic" src="The Ronettes - Be My Baby (Official Audio) [jSPpbOGnFgk].mp3" autoplay loop></audio>
+    </main>
+
+    <footer>
+        <p>Made with all my ❤️ for you, Mom!</p>
+    </footer>
+
+    <!-- Fullscreen Gallery Overlay -->
+    <div id="fullGalleryOverlay" class="full-gallery-overlay">
+        <button id="closeGallery" class="close-btn">&times;</button>
+        <div class="gallery-scroll-container" id="galleryScrollContainer">
+            <!-- Photos will be cloned here for sequential scrolling -->
+        </div>
+    </div>
+
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
